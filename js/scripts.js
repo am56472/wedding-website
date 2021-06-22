@@ -218,7 +218,7 @@ $(document).ready(function () {
             && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbzUqz44wOat0DiGjRV1gUnRf4HRqlRARWggjvHKWvqniP7eVDG-/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbx4fV8OqX2jkbkPwbpmdCtjaOYbJ6zS2BQv0EpoGFNkfrfJEBKM-gpJKrfhQZXpVfTY/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
@@ -238,12 +238,12 @@ $(document).ready(function () {
 });
 
 /********************** Extras **********************/
-
 // Google map
 function initMap() {
-    var location = {lat: 29.7911, lng: -95.384};
+    var location = {lat: 29.791366734894194, lng: -95.38384921197625};
+    var churchLocation = {lat: 29.847250421969626, lng: -95.36907868683282};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
+        zoom: 12,
         center: location,
         scrollwheel: false
     });
@@ -252,10 +252,14 @@ function initMap() {
         position: location,
         map: map
     });
-}
 
+    var churchMarker = new google.maps.Marker({
+        position: churchLocation,
+        map: map
+    });
+}
 function initBBSRMap() {
-    var la_fiesta = {lat: 29.7911, lng: -95.384};
+    var la_fiesta = {lat: 29.791366734894194, lng: -95.38384921197625};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 15,
         center: la_fiesta,
@@ -264,6 +268,11 @@ function initBBSRMap() {
 
     var marker = new google.maps.Marker({
         position: la_fiesta,
+        map: map
+    });
+
+    var churchMarker = new google.maps.Marker({
+        position: churchLocation,
         map: map
     });
 }
