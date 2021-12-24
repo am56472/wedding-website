@@ -187,7 +187,7 @@ $(document).ready(function () {
             title: "Gloria and Agustin's Wedding",
 
             // Event start date
-            start: new Date('Feb 26, 2022 6:30'),
+            start: new Date('Feb 26, 2022 5:30'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
@@ -213,12 +213,7 @@ $(document).ready(function () {
         var data = $(this).serialize();
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
-        } else {
-            $.post('https://script.google.com/macros/s/AKfycbx4fV8OqX2jkbkPwbpmdCtjaOYbJ6zS2BQv0EpoGFNkfrfJEBKM-gpJKrfhQZXpVfTY/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbyPvu5HSp6wl1BbSNPgM4fr9dHcYR9zXpAe7t_oH4lNurOfXLdntUSZGBqzu6L-_9Ok/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
@@ -232,7 +227,6 @@ $(document).ready(function () {
                     console.log(data);
                     $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
                 });
-        }
     });
 
 });
